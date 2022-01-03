@@ -3,10 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.c0">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
-</head>
-<body>
+</headc>
+<bodyc>
+
+  <div class="title">
+    snek
+  </div>
+
+  <div class="grid">
+    <div class="row">
+      <div class="cell r4 c0"></div>
+      <div class="cell r4 c1"></div>
+      <div class="cell r4 c2"></div>
+      <div class="cell r4 c3"></div>
+      <div class="cell r4 c4"></div>
+    </div>
+    <div class="row">
+      <div class="cell r3 c0"></div>
+      <div class="cell r3 c1"></div>
+      <div class="cell r3 c2"></div>
+      <div class="cell r3 c3"></div>
+      <div class="cell r3 c4"></div>
+    </div>
+    <div class="row">
+      <div class="cell r2 c0"></div>
+      <div class="cell r2 c1"></div>
+      <div class="cell r2 c2"></div>
+      <div class="cell r2 c3"></div>
+      <div class="cell r2 c4"></div>
+    </div>
+    <div class="row">
+      <div class="cell r1 c0"></div>
+      <div class="cell r1 c1"></div>
+      <div class="cell r1 c2"></div>
+      <div class="cell r1 c3"></div>
+      <div class="cell r1 c4"></div>
+    </div>
+    <div class="row">
+      <div class="cell r0 c0"></div>
+      <div class="cell r0 c1"></div>
+      <div class="cell r0 c2"></div>
+      <div class="cell r0 c3"></div>
+      <div class="cell r0 c4"></div>
+    </div>
+  </div>
 
 </body>
+<script>
+
+const coords = [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]
+
+let x = 2
+let y = 3
+
+let activeCell = document.querySelector(`.c${x}.r${y}`)
+
+activeCell.classList.add('active')
+
+function move(e) {
+  if (e.keyIdentifier === "Right") {
+    activeCell.classList.remove("active")
+    x = (x === 4 ? x - 4 : x + 1)
+  } else if (e.keyIdentifier === "Left") {
+    activeCell.classList.remove("active")
+  x = (x === 0 ? x + 4 : x - 1)
+  }
+  activeCell = document.querySelector(`.c${x}.r${y}`)
+  activeCell.classList.add('active')
+}
+
+window.addEventListener('keydown', move)
+
+</script>
 </html>

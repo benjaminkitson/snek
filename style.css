@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  width: 50vw;
+  height: 50vw;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cell {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+}
+
+.active {
+  background-color: blue;
+}
