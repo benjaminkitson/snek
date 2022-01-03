@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.c0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </headc>
@@ -463,24 +463,35 @@ const coords = [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 
 
 let x = 2
 let y = 3
+let direction
+let ms = 100
+counter = 1
 
 let activeCell = document.querySelector(`.c${x}.r${y}`)
 
 activeCell.classList.add('active')
 
+function changeDirection(e) {
+  let key = e.keyIdentifier
+  if (key === "Up" || key === "Down" || key === "Left" || key === "Right") {
+    direction = key
+  }
+  console.log(direction)
+}
+
 function move(e) {
   activeCell.classList.remove("active")
 
-  if (e.keyIdentifier === "Right") {
+  if (direction === "Right") {
     x = (x === 19 ? x - 19 : x + 1)
 
-  } else if (e.keyIdentifier === "Left") {
+  } else if (direction === "Left") {
     x = (x === 0 ? x + 19 : x - 1)
 
-  } else if (e.keyIdentifier === "Up") {
+  } else if (direction === "Up") {
     y = (y === 19 ? y - 19 : y + 1)
 
-  } else if (e.keyIdentifier === "Down") {
+  } else if (direction === "Down") {
     y = (y === 0 ? y + 19 : y - 1)
   }
 
@@ -488,7 +499,11 @@ function move(e) {
   activeCell.classList.add('active')
 }
 
-window.addEventListener('keydown', move)
+window.addEventListener('keydown', changeDirection)
+
+setInterval(move, ms)
+
+
 
 </script>
 </html>
