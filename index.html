@@ -535,17 +535,24 @@
   activeCell.classList.add(`x${counter}`)
 
   function changeDirection(e) {
-    console.log(e)
+
+    if (!game) {
+      game = setInterval(move, ms)
+    }
+
     let key = e.keyCode
 
-    if (key == 38 || key == 40 || key == 37 || key == 39) {
-      direction = key
-      if (!game) {
-        game = setInterval(move, ms)
-      }
-    } else if (key === "U+0051") {
-      length += 1
-    } else if (key === "U+0050") {
+
+
+    if (key == 38 && direction != "Down") {
+      direction = "Up"
+    } else if (key == 40 && direction != "Up") {
+      direction = "Down"
+    } else if (key == 37 && direction != "Right") {
+      direction = "Left"
+    } else if (key == 39 && direction != "Left") {
+      direction = "Right"
+    } else if (key === "80") {
       clearInterval(game)
       game = undefined
     }
