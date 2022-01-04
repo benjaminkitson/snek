@@ -2,7 +2,7 @@
 
 * {
   color: white;
-  font-family: 'Comic Neue'
+  font-family: 'Comic Neue';
 }
 
 body {
@@ -95,5 +95,34 @@ body {
   background: rgba(36, 239, 0, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 2px 5px rgba(26, 255, 0, 0.3);
+  transition: 0.5s;
 
+}
+
+.wasted {
+  display: none;
+  position:relative;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  opacity: 0;
+}
+
+.wasted-logo {
+  height: 100px;
+  opacity: 0;
+}
+
+.dflex {
+  display: flex;
+}
+
+.visible {
+  opacity: 1;
 }

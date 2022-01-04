@@ -9,6 +9,10 @@
 </head>
 <body>
 
+  <div class="wasted">
+    <img src="wasted.png" class="wasted-logo">
+  </div>
+
   <div class="title">
     snek
   </div>
@@ -513,6 +517,8 @@
 
   const scoreDiv = document.querySelector(".score")
   const levelDiv = document.querySelector(".level")
+  const wasted = document.querySelector(".wasted")
+  const wastedLogo = document.querySelector(".wasted-logo")
 
   let x = 10
   let y = 10
@@ -524,6 +530,7 @@
   scoreDiv.innerHTML = score.toFixed(5)
   levelDiv.innerHTML = `Level ${length - 9}`
   let game
+  let blocked = false
 
   let fx
   let fy
@@ -535,14 +542,12 @@
   activeCell.classList.add(`x${counter}`)
 
   function changeDirection(e) {
-
+  if (blocked == false) {
     if (!game) {
       game = setInterval(move, ms)
     }
 
     let key = e.keyCode
-
-
 
     if (key == 38 && direction != "Down") {
       direction = "Up"
@@ -556,9 +561,14 @@
       clearInterval(game)
       game = undefined
     }
+
+    blocked = true;
+    }
   }
 
   function move(e) {
+
+    blocked = false
 
     if (direction) {
       counter !== length ? counter += 1 : counter -= length - 1
@@ -577,6 +587,9 @@
     if (direction) activeCell = document.querySelector(`.c${x}.r${y}`)
 
     if (activeCell.classList.contains('active')) {
+      wasted.classList.add("dflex")
+      wasted.classList.add("visible")
+      wastedLogo.classList.add("visible")
       clearInterval(game)
     } else {
       if (document.querySelector(`.x${counter}`)) {
@@ -587,7 +600,7 @@
       if (activeCell.classList.contains('snek-snack')) {
         length += 1;
         score += ms * Math.pow(length/10, 5) / 100
-        if (ms >= 40) ms -= 20;
+        if (ms >= 20) ms /= 1.1;
         clearInterval(game);
         game = setInterval(move, ms);
         activeCell.classList.remove('snek-snack')
