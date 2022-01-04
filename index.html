@@ -570,6 +570,8 @@
 
   function move(e) {
 
+    let testTime = Date.now()
+
     blocked = false
 
     if (direction) {
@@ -585,6 +587,8 @@
     } else if (direction === "Down") {
       y = (y === 0 ? y + 20 : y - 1)
     }
+
+    console.log(ms)
 
     if (direction) activeCell = document.querySelector(`.c${x}.r${y}`)
 
@@ -602,7 +606,7 @@
       if (activeCell.classList.contains('snek-snack')) {
         length += 1;
         score += ms * Math.pow(length/10, 5) / 100
-        if (ms >= 20) ms /= 1.1;
+        if (ms >= 30) ms = ms -= 3;
         clearInterval(game);
         game = setInterval(move, ms);
         activeCell.classList.remove('snek-snack')
@@ -623,6 +627,8 @@
       foodCell = document.querySelector(`.c${fx}.r${fy}`)
       if (!foodCell.classList.contains('active')) foodCell.classList.add('snek-snack')
     }
+
+    console.log(Date.now() - testTime)
 
   }
 
