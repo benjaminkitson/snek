@@ -500,13 +500,19 @@
       </div>
     </div>
   </div>
-  <div class="score">
-
+  <div class="info">
+    <div class="score">
+    </div>
+    <div class="level">
+    </div>
   </div>
+
+
 </body>
 <script>
 
   const scoreDiv = document.querySelector(".score")
+  const levelDiv = document.querySelector(".level")
 
   let x = 10
   let y = 10
@@ -515,7 +521,8 @@
   let length = 10
   let counter = 1
   let score = 0
-  scoreDiv.innerHTML = score
+  scoreDiv.innerHTML = score.toFixed(5)
+  levelDiv.innerHTML = `Level ${length - 9}`
   let game
 
   let fx
@@ -576,7 +583,6 @@
     } else {
       if (document.querySelector(`.x${counter}`)) {
         removeCell = document.querySelector(`.x${counter}`)
-        removeCell.innerHTML = ''
         removeCell.classList.remove('active')
         removeCell.classList.remove(`x${counter}`)
       }
@@ -590,10 +596,10 @@
       }
       activeCell.classList.add('active')
       activeCell.classList.add(`x${counter}`)
-      activeCell.innerHTML = counter
     }
 
     scoreDiv.innerHTML = score.toFixed(5)
+    levelDiv.innerHTML = `Level ${length - 9}`
 
     let foodGen = Math.random()
 

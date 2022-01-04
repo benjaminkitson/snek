@@ -22,13 +22,7 @@ body {
   align-items: center;
 }
 
-.score {
-  font-size: 50px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .grid-container {
   display: flex;
@@ -74,8 +68,27 @@ body {
   z-index: 1
 }
 
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
 .score {
   font-size: 50px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.level {
+  font-size: 50px;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .snek-snack {
