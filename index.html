@@ -536,16 +536,23 @@
 
   function changeDirection(e) {
 
-    let key = e.keyIdentifier
+    if (!game) {
+      game = setInterval(move, ms)
+    }
 
-    if (key === "Up" || key === "Down" || key === "Left" || key === "Right") {
-      direction = key
-      if (!game) {
-        game = setInterval(move, ms)
-      }
-    } else if (key === "U+0051") {
-      length += 1
-    } else if (key === "U+0050") {
+    let key = e.keyCode
+
+
+
+    if (key == 38 && direction != "Down") {
+      direction = "Up"
+    } else if (key == 40 && direction != "Up") {
+      direction = "Down"
+    } else if (key == 37 && direction != "Right") {
+      direction = "Left"
+    } else if (key == 39 && direction != "Left") {
+      direction = "Right"
+    } else if (key === "80") {
       clearInterval(game)
       game = undefined
     }
@@ -559,24 +566,15 @@
 
     if (direction === "Right") {
       x = (x === 20 ? x - 20 : x + 1)
-
     } else if (direction === "Left") {
       x = (x === 0 ? x + 20 : x - 1)
-
     } else if (direction === "Up") {
       y = (y === 20 ? y - 20 : y + 1)
-
     } else if (direction === "Down") {
       y = (y === 0 ? y + 20 : y - 1)
     }
 
-
     if (direction) activeCell = document.querySelector(`.c${x}.r${y}`)
-
-
-    console.log(direction)
-    console.log(activeCell)
-
 
     if (activeCell.classList.contains('active')) {
       clearInterval(game)
