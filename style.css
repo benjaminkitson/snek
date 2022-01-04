@@ -1,26 +1,83 @@
-.grid {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  width: 50vw;
-  height: 50vw;
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
+* {
+  color: white;
+  font-family: 'Comic Neue'
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+body {
+  margin: 0;
+  background-color: rgb(0, 0, 83);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.cell {
-  border: 1px solid black;
-  border-radius: 999em;
-  width: auto;
-  height: auto;
-}
-
-.active {
-  background-color: blue;
+.title {
+  font-size: 50px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .score {
   font-size: 50px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42vw;
+  height: 42vw;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.1);
+  margin: 0
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 40vw;
+  height: 40vw;
+  position: relative
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cell {
+  border-radius: 10px;
+  width: auto;
+  height: auto;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.active {
+  background-color: rgb(0, 114, 229);
+  border: 1px solid rgba(0, 0, 255, 0.2);
+  box-shadow: 0px 0px 2px 5px rgba(0, 128, 255, 0.3);
+  z-index: 1
+}
+
+.score {
+  font-size: 50px;
+}
+
+.snek-snack {
+  background: rgba(255, 0, 0, 1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  box-shadow: 0px 0px 2px 5px rgba(255, 0, 0, 0.3);
+
 }
