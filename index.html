@@ -542,10 +542,12 @@
   activeCell.classList.add(`x${counter}`)
 
   function changeDirection(e) {
+
+  if (!game) {
+    game = setInterval(move, ms)
+  }
+
   if (blocked == false) {
-    if (!game) {
-      game = setInterval(move, ms)
-    }
 
     let key = e.keyCode
 
@@ -557,7 +559,7 @@
       direction = "Left"
     } else if (key == 39 && direction != "Left") {
       direction = "Right"
-    } else if (key === "80") {
+    } else if (key == "80") {
       clearInterval(game)
       game = undefined
     }
