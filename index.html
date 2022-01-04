@@ -547,7 +547,7 @@
   function move(e) {
 
     if (direction) {
-      counter !== length - 1 ? counter += 1 : counter -= (length - 1)
+      counter !== length ? counter += 1 : counter -= length - 1
     }
 
     if (direction === "Right") {
@@ -576,11 +576,13 @@
     } else {
       if (document.querySelector(`.x${counter}`)) {
         removeCell = document.querySelector(`.x${counter}`)
+        removeCell.innerHTML = ''
         removeCell.classList.remove('active')
         removeCell.classList.remove(`x${counter}`)
       }
       if (activeCell.classList.contains('snek-snack')) {
         length += 1;
+        score += ms * Math.pow(length/10, 5) / 100
         if (ms >= 40) ms -= 20;
         clearInterval(game);
         game = setInterval(move, ms);
@@ -588,10 +590,10 @@
       }
       activeCell.classList.add('active')
       activeCell.classList.add(`x${counter}`)
-      score += ms * length / 100
+      activeCell.innerHTML = counter
     }
 
-    scoreDiv.innerHTML = score
+    scoreDiv.innerHTML = score.toFixed(5)
 
     let foodGen = Math.random()
 
