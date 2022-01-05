@@ -528,7 +528,9 @@
   let y = 10
   let direction
   let ms = 300
+  let totalMs = 0
   let length = 10
+  let level = 1
   let counter = 1
   let score = 0
   scoreDiv.innerHTML = score.toFixed(5)
@@ -574,7 +576,7 @@
 
   function move(e) {
 
-    let testTime = Date.now()
+    levelDiv.innerHTML = `Level ${level}`
 
     blocked = false
 
@@ -610,9 +612,6 @@
       if (activeCell.classList.contains('snek-snack')) {
         length += 1;
         score += ms * Math.pow(length/10, 5) / 100
-        if (ms >= 30) ms = ms -= 3;
-        clearInterval(game);
-        game = setInterval(move, ms);
         activeCell.classList.remove('snek-snack')
       }
       activeCell.classList.add('active')
@@ -620,7 +619,14 @@
     }
 
     scoreDiv.innerHTML = score.toFixed(5)
-    levelDiv.innerHTML = `Level ${length - 9}`
+
+    if (totalMs / level >= 10000) {
+      level += 1;
+      ms -= 20
+      clearInterval(game);
+      game = setInterval(move, ms);
+    }
+
 
     let foodGen = Math.random()
 
@@ -632,7 +638,9 @@
       if (!foodCell.classList.contains('active')) foodCell.classList.add('snek-snack')
     }
 
-    console.log(Date.now() - testTime)
+    totalMs += ms
+
+
 
   }
 
